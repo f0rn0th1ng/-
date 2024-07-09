@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>球队管理系统</title>
+<link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+<div class="box">
+	<div class="top">
+		<div class="title">球队管理系统</div>
+		<div class="nav">
+			<a href="index.php">返回</a>
+		</div>
+	</div>
+	<div class="main">
+		<div class="lib-title"><?php echo $data['coach_num']?></div>
+		<div class="lib-time">【<?php echo $data['coach_name'];?>】 <?php echo $data['coach_age'];?></div>
+		
+		<div class="lib-content"><?php echo $data['coach_country']?></div>
+	</div>
+</div>
+</body>
+</html>

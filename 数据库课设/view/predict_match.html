@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>比赛预测</title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="box">
+    <div class="top">
+        <div class="title">比赛预测</div>
+        <div class="nav">
+            <a href="index.php">返回</a>
+        </div>
+    </div>
+    <div class="main">
+        <form action="predict_match.php" method="post">
+            <h3>选择上场球员</h3>
+            <div class="players">
+                <?php
+                // 连接数据库并获取球员列表
+                require 'info_db_connect.php';
+                $sql = 'SELECT player_num, player_name FROM player';
+                $stmt = $pdo->query($sql);
+                $players = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($players as $player) {
+                    echo '<div class="player">';
+                    echo '<input type="checkbox" name="players[]" value="' . $player['player_num'] . '">';
+                    echo '<label>' . $player['player_name'] . '</label>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
+            <input type="submit" value="预测比赛">
+        </form>
+    </div>
+</div>
+</body>
+</html>

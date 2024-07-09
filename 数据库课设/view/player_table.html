@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>球员信息模块</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    .box {
+        width: 80%;
+        margin: 50px auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .top {
+        background-color: #007BFF;
+        padding: 20px;
+    }
+    .title {
+        color: #fff;
+        font-size: 24px;
+        text-align: center;
+        margin: 0;
+    }
+    .nav {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        background-color: #0056b3;
+        border-radius: 5px;
+        margin: 0 5px;
+        display: inline-block;
+    }
+    .nav a:hover {
+        background-color: #003d80;
+    }
+    .main {
+        padding: 20px;
+    }
+    form {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    input[type="text"] {
+        padding: 10px;
+        width: 200px;
+        margin-right: 10px;
+    }
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #007BFF;
+        color: #fff;
+    }
+    td a {
+        color: #007BFF;
+        text-decoration: none;
+        padding: 5px 10px;
+        border: 1px solid #007BFF;
+        border-radius: 5px;
+        margin: 0 2px;
+    }
+    td a:hover {
+        background-color: #007BFF;
+        color: #fff;
+    }
+    .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+</style>
+</head>
+<body>
+    <div class="box">
+        <div class="top">
+            <div class="title">球员管理系统</div>
+            <div class="nav">
+                <a href="../player_add.php">添加球员</a>
+                <a href="../player_contract.php">球员合同</a>
+                <a href="index.php">返回</a>
+            </div>
+        </div>
+        <div class="main">
+            <!-- 查询表单 -->
+            <form method="GET" action="player_table.php">
+                <label for="player_num">球员编号:</label>
+                <input type="text" id="player_num" name="player_num">
+                <input type="submit" value="查询">
+            </form>
+            
+            <table class="lib-list">
+                <tr>
+                    <th width="100">球员编号</th>
+                    <th width="100">球员姓名</th>
+                    <th width="100">球员国籍</th>
+                    <th width="100">球员年龄</th>
+                    <th width="100">球员位置</th>
+                    <th width="100">执教教练</th>
+                    <th width="100">头像</th>
+                    <th width="600">操作</th>
+                </tr>   
+                <?php foreach($data as $v): ?>
+                    <tr>
+                        <td class="center"><?php echo isset($v['player_num']) ? $v['player_num'] : 'N/A'; ?></td>
+                        <td class="center"><?php echo isset($v['player_name']) ? $v['player_name'] : 'N/A'; ?></td>
+                        <td class="center"><?php echo isset($v['player_nation']) ? $v['player_nation'] : 'N/A'; ?></td>
+                        <td class="center"><?php echo isset($v['player_age']) ? $v['player_age'] : 'N/A'; ?></td>
+                        <td class="center"><?php echo isset($v['player_position']) ? $v['player_position'] : 'N/A'; ?></td>
+                        <td class="center"><?php echo isset($v['coach_num']) ? $v['coach_num'] : 'N/A'; ?></td>
+                        <td class="center">
+                            <?php if (isset($v['player_avatar']) && $v['player_avatar'] != ''): ?>
+                                <img src="../uploads/<?php echo htmlspecialchars($v['player_avatar']); ?>" alt="头像" class="avatar">
+                            <?php else: ?>
+                                N/A
+                            <?php endif; ?>
+                        </td>
+                        <td class="center">
+                            <a href="../player_edit.php?player_num=<?php echo $v['player_num']; ?>">编辑</a>  
+                            <a href="../player_del.php?player_num=<?php echo $v['player_num']; ?>" onclick="return confirm('确定删除？');">删除</a>
+                            <a href="../player_contract.php?player_num=<?php echo $v['player_num']; ?>">查看合同</a>
+                            <a href="../coach_table.php?coach_num=<?php echo $v['coach_num']; ?>">查看执教教练</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

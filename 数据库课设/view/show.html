@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图书管理系统</title>
+<link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+<div class="box">
+	<div class="top">
+		<div class="title">图书管理系统</div>
+		<div class="nav">
+			<a href="index.php">返回</a>
+		</div>
+	</div>
+	<div class="main">
+		<div class="lib-title"><?php echo $data['title']?></div>
+		<div class="lib-time">【<?php echo $data['country'];?>】 <?php echo $data['author'];?></div>
+		<div class="lib-time">入库时间:<?php echo $data['addtime'];?> 编号:<?php echo $data['id'];?></div>
+		<div class="lib-content"><?php echo $data['content']?></div>
+	</div>
+</div>
+</body>
+</html>

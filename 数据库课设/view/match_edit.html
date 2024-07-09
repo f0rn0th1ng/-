@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>球员管理系统</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    .box {
+        width: 60%;
+        margin: 50px auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .top {
+        background-color: #007BFF;
+        padding: 20px;
+    }
+    .title {
+        color: #fff;
+        font-size: 24px;
+        text-align: center;
+        margin: 0;
+    }
+    .nav {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        background-color: #0056b3;
+        border-radius: 5px;
+        margin: 0 5px;
+        display: inline-block;
+    }
+    .nav a:hover {
+        background-color: #003d80;
+    }
+    .main {
+        padding: 20px;
+    }
+    table.lib-edit {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    table.lib-edit th, table.lib-edit td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    table.lib-edit th {
+        background-color: #f2f2f2;
+    }
+    table.lib-edit td input[type="text"],
+    table.lib-edit td input[type="int"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    table.lib-edit td input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    table.lib-edit td input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<div class="box">
+    <div class="top">
+        <div class="title">球员管理</div>
+        <div class="nav">
+            <a href='match_table.php'>返回</a>
+        </div>
+    </div>
+    <div class="main">
+        <form method="post">
+            <table class="lib-edit">
+                <tr>
+                    <th>比赛日期：</th>
+                    <td><input type="text" name="match_date" value="<?php echo $data['match_date'];?>"/></td>
+                </tr>
+                <tr>
+                    <th>比赛场地：</th>
+                    <td><input type="text" name="competition_area" value="<?php echo $data['competition_area'];?>"/></td>
+                </tr>
+                <tr>
+                    <th>赛事：</th>
+                    <td><input type="text" name="match_name" value="<?php echo $data['match_name'];?>"/></td>
+                </tr>
+                <tr>
+                    <th>我方得分：</th>
+                    <td><input type="text" name="team_score" value="<?php echo $data['team_score'];?>"/></td>
+                </tr>
+                <tr>
+                    <th>对方得分：</th>
+                    <td><input type="text" name="E_team_score" value="<?php echo $data['E_team_score'];?>"/></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><input type="submit" value="提交修改" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

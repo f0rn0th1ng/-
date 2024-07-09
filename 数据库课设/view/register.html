@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户注册</title>
+<link href="../css/login.css" rel="stylesheet"/>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: url('./images/888.png') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .box {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 300px;
+    }
+    .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #007BFF;
+    }
+    table.login {
+        width: 100%;
+    }
+    table.login th, table.login td {
+        padding: 10px;
+        text-align: left;
+    }
+    table.login th {
+        text-align: right;
+        padding-right: 10px;
+        color: #333;
+    }
+    table.login input[type="text"],
+    table.login input[type="password"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    table.login input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007BFF;
+        color: #fff;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    table.login input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+
+<body>
+<div class="box">
+    <div class="title">用户注册</div>
+    <form action="../register.php" method="post">
+        <table class="login">
+            <tr>
+                <th>用户名：</th>
+                <td><input type="text" name="username"/></td>
+            </tr>
+            <tr>
+                <th>密码：</th>
+                <td><input type="password" name="pwd"/></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="注册"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
